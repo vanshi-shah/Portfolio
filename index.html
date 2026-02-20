@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanshi Shah Portfolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Adamina&family=Roboto:wght@400;500&family=Lancelot&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-[#0B1020] text-white overflow-x-hidden">
+
+  <!-- Background Glow -->
+  <div class="background-glow"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar-fixed">
+  <div class="glass-nav px-12 py-4 flex gap-10 rounded-full">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#process" class="nav-link">Process</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+  <!-- Hero Section -->
+ <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-40">
+
+    <!-- Name Image Placeholder -->
+    <div class="name-container hero-section">
+      <img src="VANSHI SHAH.png" alt="Vanshi Shah" class="name-img" />
+    </div>
+
+    <!-- Subheading -->
+    <h2 class="sub-heading mt-8">
+      Web Developer bridging design and code
+    </h2>
+
+    <!-- Description -->
+    <p class="description mt-10 max-w-xl text-left">
+      “I <span class="accent">design</span> and <span class="accent">build</span> thoughtful
+      web experiences guided by clarity, <span class="accent">structure</span>, and usability.”
+    </p>
+
+    <!-- Buttons -->
+    <div class="mt-12 flex gap-6 flex-wrap justify-center">
+
+      <!-- Primary Button -->
+      <button class="primary-btn">
+        Work with Me
+        <span class="arrow-circle">↗</span>
+      </button>
+
+      <!-- Secondary Button -->
+      <button class="secondary-btn" onclick="window.open('RESUME_2.pdf', '_blank')">
+        Download Resume
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- About Section -->
+
+  <section id="about" class="about-section">
+
+  <div class="about-container">
+
+    <!-- Left Content -->
+    <div class="about-left">
+
+      <h3 class="about-tag">ABOUT</h3>
+
+      <h2 class="about-heading">
+        I build with intention,<br> not noise.
+      </h2>
+
+      <div class="about-text">
+
+        <p>
+          I’m Vanshi — a web developer working at the intersection of design and logic.
+        </p>
+
+        <p>
+          I care deeply about <span class="accent">structure</span>, 
+          <span class="accent">clarity</span>, and how users actually experience a product —
+          not just how it looks in a screenshot.
+        </p>
+
+        <p>
+          My approach blends thoughtful design decisions with clean, maintainable code —
+          always with usability at the center.
+        </p>
+
+        <p class="muted">
+          Currently sharpening my frontend skills by building real projects —
+          one well-thought-out interface at a time.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- Right Card -->
+    <div class="about-card">
+      <h4>What I focus on:</h4>
+
+      <ul>
+        <li><span>Structure</span> before styling</li>
+        <li><span>Clarity</span> over cleverness</li>
+        <li><span>Design</span> that can be built</li>
+        <li><span>Code</span> that supports long-term use</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+  <script src="script.js"></script>
+</body>
+</html>

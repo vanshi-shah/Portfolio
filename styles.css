@@ -1,0 +1,266 @@
+/* html stylesheet for the portfolio website*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Headings ===== */
+
+h1, h2, h3 {
+  font-family: 'Lancelot', cursive;
+  letter-spacing: 1px;
+}
+
+/* ===== Fonts ===== */
+
+body {
+  font-family: 'Adamina', serif;
+}
+
+/* Navbar Font */
+.nav-link {
+  font-family: 'Roboto', sans-serif;
+  color: #ffffffcc;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #5B8CFF;
+}
+
+/* =========================
+   FIXED NAVBAR
+========================= */
+
+.navbar-fixed {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* Prevent content hiding behind navbar */
+body {
+  scroll-padding-top: 120px;
+}
+
+.hero-section {
+  padding-top: 10px;
+}
+
+/* ===== Background Glow ===== */
+
+.background-glow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(91, 140, 255, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(56, 138, 223, 0.15),
+      transparent 50%
+    );
+  z-index: -1;
+}
+
+/* ===== Glass Navbar ===== */
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 20px rgba(91, 140, 255, 0.08);
+}
+/* ===== Name Styling ===== */
+
+.name-container {
+  position: relative;
+}
+
+.name-img {
+  width: 900px;
+  max-width: 95%;
+  filter: drop-shadow(0 0 30px rgba(255,255,255,0.25));
+}
+
+/* ===== Sub Heading ===== */
+
+.sub-heading {
+  font-family: 'Lancelot', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  color: #cfd5f1;
+}
+/* ===== Description ===== */
+
+.description {
+  font-size: 1.1rem;
+  color: #b7bedc;
+  line-height: 1.8;
+}
+
+.accent {
+  color: #5B8CFF;
+}
+
+/* ===== Buttons ===== */
+
+.primary-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #5B8CFF, #385CD2);
+  border-radius: 999px;
+  font-family: 'Adamina', serif;
+  font-size: 1.2rem;
+  color: #0B1020;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(91, 140, 255, 0.5);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(91, 140, 255, 0.7);
+}
+
+/*.arrow-circle {
+  background: white;
+  color: black;
+  padding: 10px 14px;
+  border-radius: 50%;
+  font-size: 1rem;
+}*/
+
+/* Secondary Button */
+
+.secondary-btn {
+  padding: 16px 32px;
+  border-radius: 999px;
+  border: 1px solid #5B8CFF;
+  color: #5B8CFF;
+  font-family: 'Adamina', serif;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(91, 140, 255, 0.1);
+  box-shadow: 0 0 20px rgba(91, 140, 255, 0.4);
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-section {
+  padding: 140px 8%;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* LEFT SIDE */
+
+.about-left {
+  max-width: 620px;
+}
+
+.about-tag {
+  font-family: 'Lancelot', cursive;
+  font-size: 3.8rem;
+  letter-spacing: 2px;
+  color: #5B8CFF;
+  margin-bottom: 20px;
+}
+
+.about-heading {
+  font-family: 'Lancelot', cursive;
+  font-size: 3.6rem;
+  line-height: 1.15;
+  margin-bottom: 48px;
+  color: #F2F4FF;
+}
+
+.about-section .about-text p {
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-text p {
+  font-family: 'Adamina', serif;
+  font-size: 1.25rem;
+  line-height: 2;
+  color: #B7BEDC;
+  max-width: 600px;
+}
+
+.about-text .muted {
+  opacity: 0.7;
+}
+
+/* RIGHT CARD */
+
+.about-card {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(91, 140, 255, 0.15);
+  padding: 40px;
+  border-radius: 20px;
+  width: 380px;
+  top: 250px;
+  box-shadow: 0 0 30px rgba(91, 140, 255, 0.08);
+}
+
+.about-card h4 {
+  font-family: 'Adamina', serif;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #F2F4FF;
+}
+
+.about-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-card li {
+  font-family: 'Adamina', serif;
+  font-size: 1.1rem;
+  color: #CFD5F1;
+}
+
+.about-card li span {
+  color: #5B8CFF;
+}
+
+.hidden-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
