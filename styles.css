@@ -75,6 +75,49 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 4px 20px rgba(91, 140, 255, 0.08);
+  /* Lock Navbar Size */
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+
+  gap: 30px;  /* adjust between 4rem – 6rem */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 64px;   /* stabilizes height */
+}
+
+
+/* Active Navbar Link */
+
+.nav-link {
+  font-family: 'Roboto', sans-serif;
+  color: #ffffffcc;
+  transition: 0.3s ease;
+  position: relative; /* move this here */
+  display: inline-block;
+  padding-bottom: 4px; /* stabilize underline spacing */
+  white-space: nowrap;
+  flex-shrink: 0;
+
+}
+
+.nav-link.active {
+  color: #5B8CFF;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;   /* controlled position */
+  width: 100%;
+  height: 2px;
+  background: #5B8CFF;
+  border-radius: 2px;
 }
 /* ===== Name Styling ===== */
 
@@ -264,3 +307,160 @@ body {
   transform: translateY(0);
 }
 
+/* =========================
+   SERVICES SECTION
+========================= */
+
+/* =========================
+   SERVICES SECTION
+========================= */
+
+.services-section {
+  padding: 160px 8%;
+  position: relative;
+}
+
+.services-header {
+  margin-bottom: 70px;
+}
+
+.services-tag {
+  font-family: 'Lancelot', cursive;
+  font-size: 3.8rem;
+  letter-spacing: 3px;
+  color: #6E8CFF;
+}
+
+.services-heading {
+  font-family: 'Lancelot', cursive;
+  font-size: 4.8rem;
+  color: #F2F4FF;
+}
+
+.services-subtext {
+  margin-top: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.5rem;
+}
+
+/* Slider */
+
+.slider-wrapper {
+  position: relative;
+  display: block;   /* important change */
+  width: 100%;
+  margin: 80px 0 40px 0;
+}
+
+.services-slider-container {
+  overflow: hidden;
+  width: 100%;
+  height: 620px;  /* increased height */
+  display: flex;
+  align-items: center;
+}
+
+.services-slider {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  transition: transform 0.7s ease;
+}
+
+/* Cards */
+
+.service-card {
+  min-width: 420px;
+  height: 480px;
+  padding: 50px 45px;
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(120,150,255,0.2);
+  backdrop-filter: blur(14px);
+  transition: all 0.5s ease;
+  box-shadow: inset 0 0 35px rgba(120,150,255,0.05);
+}
+
+.service-card h4 {
+  font-size: 2rem;
+  color: #6E8CFF;
+  margin-bottom: 18px;
+  text-shadow: 0 0 15px rgba(110,140,255,0.3);
+}
+
+.service-card p {
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 25px;
+}
+
+.includes span {
+  color: #6E8CFF;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.includes ul {
+  list-style: disc;
+  padding-left: 20px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+}
+
+/* Blur non active */
+.service-card:not(.active) {
+  opacity: 0.5;
+  filter: blur(2px);
+  transform: scale(0.88);
+}
+
+/* Active center */
+.service-card.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1.15);
+  z-index: 2;
+  box-shadow:
+    inset 0 0 45px rgba(110,140,255,0.08),
+    0 0 60px rgba(110,140,255,0.25);
+}
+
+/* Buttons */
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(120,150,255,0.3);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  font-size: 1.8rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-btn.left { left: -80px; }
+.slider-btn.right { right: -80px; }
+
+.slider-btn:hover {
+  box-shadow:
+    inset 0 0 20px rgba(110,140,255,0.2),
+    0 0 20px rgba(110,140,255,0.2);
+}
+
+/* Bottom text */
+
+.services-bottom {
+  margin-top: 80px;
+  text-align: left;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.5rem;
+  text-align: center;
+  display: block;
+  width: 100%;
+  clear: both;   /* forces it below */
+}

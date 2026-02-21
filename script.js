@@ -4,6 +4,37 @@ document.querySelectorAll('.nav-link').forEach(link => {
     link.style.textShadow = "0 0 10px rgba(91,140,255,0.7)";
   });
 
+  /* =========================
+   NAVBAR ACTIVE SECTION
+========================= */
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 200;
+    const sectionHeight = section.clientHeight;
+
+    if (window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+
+});
+
   link.addEventListener('mouseleave', () => {
     link.style.textShadow = "none";
   });
@@ -23,3 +54,100 @@ document.querySelectorAll('.about-left, .about-card')
     el.classList.add("hidden-section");
     observer.observe(el);
   });
+
+
+/* =========================
+   SERVICES SLIDER
+========================= */
+
+/* =========================
+   WORKING CENTER INFINITE SLIDER
+========================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slider = document.querySelector(".services-slider");
+  const container = document.querySelector(".services-slider-container");
+  const prevBtn = document.querySelector(".slider-btn.left");
+  const nextBtn = document.querySelector(".slider-btn.right");
+
+  if (!slider) return;
+
+  let cards = Array.from(slider.children);
+
+  // Clone ONLY once
+  const firstClone = cards[0].cloneNode(true);
+  const lastClone = cards[cards.length - 1].cloneNode(true);
+
+  slider.appendChild(firstClone);
+  slider.insertBefore(lastClone, slider.firstChild);
+
+  cards = Array.from(slider.children);
+
+  let index = 1;
+  let isTransitioning = false;
+
+  function updateSlider(animate = true) {
+
+    const cardWidth = cards[index].offsetWidth;
+    const gap = parseInt(getComputedStyle(slider).gap) || 50;
+    const containerWidth = container.offsetWidth;
+
+    const offset =
+      (index * (cardWidth + gap)) -
+      (containerWidth / 2) +
+      (cardWidth / 2);
+
+    slider.style.transition = animate ? "transform 0.6s ease" : "none";
+    slider.style.transform = `translateX(-${offset}px)`;
+
+    cards.forEach(card => card.classList.remove("active"));
+    cards[index].classList.add("active");
+  }
+
+  function nextSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    index++;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    index--;
+    updateSlider();
+  }
+
+  slider.addEventListener("transitionend", () => {
+
+    if (index === cards.length - 1) {
+      slider.style.transition = "none";
+      index = 1;
+      updateSlider(false);
+    }
+
+    if (index === 0) {
+      slider.style.transition = "none";
+      index = cards.length - 2;
+      updateSlider(false);
+    }
+
+    isTransitioning = false;
+  });
+
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  // Controlled auto slide
+  let autoSlide = setInterval(nextSlide, 4000);
+
+  slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
+  slider.addEventListener("mouseleave", () => {
+    autoSlide = setInterval(nextSlide, 4000);
+  });
+
+  window.addEventListener("resize", () => updateSlider(false));
+
+  updateSlider(false);
+});
