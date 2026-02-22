@@ -55,6 +55,112 @@ document.querySelectorAll('.about-left, .about-card')
     observer.observe(el);
   });
 
+/* =========================
+    PROJECTS FILTER
+========================= */
+document.addEventListener("DOMContentLoaded", function () {
+
+  const projectItems = document.querySelectorAll(".project-item");
+  const projectContents = document.querySelectorAll(".project-content");
+
+  projectItems.forEach(item => {
+    item.addEventListener("click", function () {
+
+      const targetProject = this.getAttribute("data-project");
+
+      // Remove active state from all nav items
+      projectItems.forEach(i => i.classList.remove("active"));
+
+      // Hide all project panels
+      projectContents.forEach(content => {
+        content.classList.remove("active");
+      });
+
+      // Activate selected nav item
+      this.classList.add("active");
+
+      // Show selected project panel
+      const activePanel = document.getElementById(targetProject);
+      if (activePanel) {
+        activePanel.classList.add("active");
+      }
+
+    });
+  });
+
+});
+
+/* =========================
+   PROJECT SIDEBAR SWITCH
+========================= */
+
+const tabs = document.querySelectorAll(".project-tab");
+const panels = document.querySelectorAll(".project-panel");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    const target = tab.dataset.project;
+
+    tabs.forEach(t => t.classList.remove("active"));
+    panels.forEach(p => p.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(target).classList.add("active");
+  });
+});
+
+/* =========================
+   PROJECT IMAGE SLIDERS
+========================= */
+
+document.querySelectorAll(".project-slider").forEach(slider => {
+
+  const slides = slider.querySelector(".slides");
+  const slideItems = slider.querySelectorAll(".slide");
+  const prev = slider.querySelector(".prev");
+  const next = slider.querySelector(".next");
+
+  let index = 0;
+
+  function updateSlide() {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  next.addEventListener("click", () => {
+    index = (index + 1) % slideItems.length;
+    updateSlide();
+  });
+
+  prev.addEventListener("click", () => {
+    index = (index - 1 + slideItems.length) % slideItems.length;
+    updateSlide();
+  });
+
+});
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 150;
+    const sectionHeight = section.offsetHeight;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
 
 /* =========================
    SERVICES SLIDER

@@ -46,7 +46,8 @@ body {
 }
 
 .hero-section {
-  padding-top: 10px;
+  padding-top: 128px;
+  padding-bottom:10px;
 }
 
 /* ===== Background Glow ===== */
@@ -120,15 +121,36 @@ body {
   border-radius: 2px;
 }
 /* ===== Name Styling ===== */
+/*Hero Section*/
 
-.name-container {
-  position: relative;
+.hero-section {
+  padding-top: 80px;
+  padding-bottom: 0px;
+  text-align: center;
 }
 
 .name-img {
-  width: 900px;
+  width: 950px;
   max-width: 95%;
-  filter: drop-shadow(0 0 30px rgba(255,255,255,0.25));
+  filter: drop-shadow(0 0 40px rgba(91,140,255,0.25));
+}
+
+.sub-heading {
+  font-size: 2.6rem;
+  margin-top: 50px;
+  color: #CFD5F1;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 2;
+  max-width: 600px;
+  margin: 50px auto 0;
+  color: #B7BEDC;
+}
+
+.accent {
+  color: #5B8CFF;
 }
 
 /* ===== Sub Heading ===== */
@@ -197,6 +219,207 @@ body {
   box-shadow: 0 0 20px rgba(91, 140, 255, 0.4);
 }
 
+/* =========================
+   PROJECTS SECTION 
+   =================== */
+/* =========================
+   REFINED PROJECT SECTION
+========================= */
+
+.projects-section {
+  padding: 160px 8%;
+  background: #0F1226;
+}
+
+.projects-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 50px;   /* reduced from 100px */
+}
+
+/* Sidebar */
+
+.project-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-title {
+  font-family: 'Lancelot', cursive;
+  font-size: 2rem;
+  color: #5B8CFF;
+  margin-bottom: 20px;
+}
+
+.project-tab {
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'Adamina', serif;  /* changed */
+  font-size: 1rem;
+  color: #B7BEDC;
+  opacity: 0.65;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.project-tab:hover {
+  opacity: 1;
+  color: #5B8CFF;
+}
+
+.project-tab.active {
+  color: #5B8CFF;
+  opacity: 1;
+}
+
+/* Main Panel */
+
+.project-main {
+  background: #11163A;
+  border-radius: 28px;
+  padding: 60px 30px;
+  border: 1px solid rgba(91,140,255,0.15);
+}
+
+.project-panel {
+  display: none;
+}
+
+.project-panel.active {
+  display: block;
+}
+
+.project-layout {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 80px;
+  align-items: center;
+}
+
+.project-layout.simple {
+  grid-template-columns: 1fr 420px;
+}
+
+.project-info h2 {
+  font-size: 2.6rem;
+  color: #F2F4FF;
+}
+
+.role {
+  color: #5B8CFF;
+  margin-bottom: 20px;
+}
+
+.project-desc {
+  color: #CFD5F1;
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+/* Slider */
+
+.project-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(91,140,255,0.2);
+}
+
+.project-cta-right .secondary-btn {
+  margin-left: 14px;
+}
+
+.project-cta-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.slide {
+  min-width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1A1F4A;
+  color: #B7BEDC;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(91,140,255,0.15);
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+}
+
+.slide-btn.prev { left: 15px; }
+.slide-btn.next { right: 15px; }
+
+.single-visual {
+  height: 320px;
+  border-radius: 20px;
+  background: #1A1F4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B7BEDC;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 34px;      /* balanced horizontal padding */
+  border-radius: 999px;    /* true pill shape */
+
+  background: #5B8CFF;
+  color: #0F1226;
+
+  font-family: 'Lancelot', serif;
+  font-size: 1rem;
+  white-space: nowrap;     /* 🔥 prevents text wrapping */
+
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.primary-btn:hover {
+  box-shadow: 0 0 18px rgba(91,140,255,0.35);
+}
+
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 34px;
+  border-radius: 999px;
+
+  background: transparent;
+  color: #5B8CFF;
+  border: 1px solid #5B8CFF;
+
+  font-family: 'Lancelot', serif;
+  font-size: 1rem;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 /* =========================
    ABOUT SECTION
 ========================= */

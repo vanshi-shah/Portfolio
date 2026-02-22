@@ -23,7 +23,7 @@
   <nav class="navbar-fixed">
   <div class="glass-nav flex rounded-full">     
     <a href="#services" class="nav-link">Services</a>
-    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#featured-projects" class="nav-link">Projects</a>
     <a href="#process" class="nav-link">Process</a>
     <a href="#pricing" class="nav-link">Pricing</a>
     <a href="#contact" class="nav-link">Contact</a>
@@ -31,12 +31,12 @@
 </nav>
 
   <!-- Hero Section -->
- <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-40">
+ <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20 pb-40">
 
     <!-- Name Image Placeholder -->
     <div class="name-container hero-section">
       <img src="VANSHI SHAH.png" alt="Vanshi Shah" class="name-img" />
-    </div>
+    
 
     <!-- Subheading -->
     <h2 class="sub-heading mt-8">
@@ -48,7 +48,7 @@
       “I <span class="accent">design</span> and <span class="accent">build</span> thoughtful
       web experiences guided by clarity, <span class="accent">structure</span>, and usability.”
     </p>
-
+    </div>
     <!-- Buttons -->
     <div class="mt-12 flex gap-6 flex-wrap justify-center">
 
@@ -66,7 +66,159 @@
     </div>
 
   </section>
+ 
+  <!-- =========================
+     PROJECTS SECTION 
+     ================== -->
 
+<section id="featured-projects" class="projects-section">
+
+  <div class="projects-wrapper">
+
+    <!-- SIDE NAV (Minimal & Quiet) -->
+    <div class="project-sidebar">
+      <h3 class="sidebar-title">Selected Work</h3>
+
+      <button class="project-tab active" data-project="taksh">Taksh Enterprise</button>
+      <button class="project-tab" data-project="mindform">MindForm Studio</button>
+      <button class="project-tab" data-project="weather">Weather App</button>
+      <button class="project-tab" data-project="starbucks">Starbucks Matcha</button>
+      <button class="project-tab" data-project="ui">UI Explorations</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="project-main">
+
+      <!-- TAKSH -->
+      <div class="project-panel active" id="taksh">
+        <div class="project-layout">
+
+          <div class="project-info">
+            <h2>Taksh Enterprise</h2>
+            <p class="role">Frontend Architecture & Implementation</p>
+
+            <p class="project-desc">
+              Built a structured, scalable business website translating design
+              into production-ready frontend architecture.
+            </p>
+
+            
+          </div>
+
+          <!-- MULTI IMAGE SLIDER -->
+          <div class="project-slider" data-slider="taksh">
+            <div class="slides">
+              <div class="slide">Website Hero Screenshot</div>
+              <div class="slide">Mobile View Screenshot</div>
+              <div class="slide">Architecture / Layout View</div>
+            </div>
+            <button class="slide-btn prev">‹</button>
+            <button class="slide-btn next">›</button>
+          </div>
+          
+          <!-- CTA -->
+            <div class="project-cta-right">
+              <button class="primary-btn"
+              onclick="window.open('Taksh Enterprise Website_shorter.pdf','_blank')">
+              View Case Study
+            </button>
+
+            <button class="secondary-btn"
+             onclick="window.open('https://takshenterprise.vercel.app/', '_blank')">
+              View Website
+            </button>
+            </div>
+        </div>
+      </div>
+
+      <!-- MINDFORM -->
+      <div class="project-panel" id="mindform">
+        <div class="project-layout">
+
+          <div class="project-info">
+            <h2>MindForm Studio</h2>
+            <p class="role">Brand & UI System Builder</p>
+
+            <p class="project-desc">
+              Designed a scalable UI identity system grounded in spacing,
+              hierarchy, and reusable design tokens.
+            </p>
+            </div>
+            
+          <!-- MULTI IMAGE SLIDER -->
+          <div class="project-slider" data-slider="mindform">
+            <div class="slides">
+              <div class="slide">UI System Overview</div>
+              <div class="slide">Grid & Spacing System</div>
+              <div class="slide">Color + Typography System</div>
+            </div>
+            <button class="slide-btn prev">‹</button>
+            <button class="slide-btn next">›</button>
+          </div>
+
+          <!-- CTA -->
+            <div class="project-cta-right">
+            <button class="primary-btn" onclick="window.open('MindForm Studio.pdf','_blank')">
+            View Case Study
+            </button>
+            </div>
+          </div>
+      </div>
+
+
+      <!-- WEATHER -->
+      <div class="project-panel" id="weather">
+        <div class="project-layout simple">
+          <div class="project-info">
+            <h2>Weather Interface</h2>
+            <p class="role">UI Designer</p>
+            <p class="project-desc">Minimal clarity-driven weather UI study.</p>
+          </div>
+          <div class="single-visual">App Screenshot</div>
+        </div>
+      </div>
+
+      <!-- STARBUCKS -->
+      <div class="project-panel" id="starbucks">
+        <div class="project-layout simple">
+          <div class="project-info">
+            <h2>Starbucks Matcha</h2>
+            <p class="role">Landing Redesign</p>
+            <p class="project-desc">Structured brand-aligned hero redesign.</p>
+          </div>
+          <div class="single-visual">Landing Mockup</div>
+        </div>
+      </div>
+
+      <!-- UI -->
+      <div class="project-panel" id="ui">
+      <div class="project-layout">
+
+    <div class="project-info">
+      <h2>UI Explorations</h2>
+      <p class="role">Visual Studies</p>
+      <p class="project-desc">
+        Poster and layout explorations focused on composition,
+        contrast, and visual rhythm.
+      </p>
+    </div>
+
+    <div class="project-slider" data-slider="ui">
+      <div class="slides">
+        <div class="slide">Poster 01</div>
+        <div class="slide">Poster 02</div>
+        <div class="slide">Poster 03</div>
+      </div>
+      <button class="slide-btn prev">‹</button>
+      <button class="slide-btn next">›</button>
+    </div>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
   <!-- About Section -->
 
   <section id="about" class="about-section">
