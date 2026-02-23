@@ -257,3 +257,97 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateSlider(false);
 });
+
+/* =========================
+    Process Section - Scroll Animations
+========================= */
+
+// ===========================
+// PROCESS SCROLL ANIMATION (STAGGERED)
+// ===========================
+
+const processSteps = document.querySelectorAll(".process-step");
+
+function revealProcess() {
+  processSteps.forEach((step, index) => {
+    const stepTop = step.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight * 0.85;
+
+    if (stepTop < triggerPoint && !step.classList.contains("active")) {
+      setTimeout(() => {
+        step.classList.add("active");
+      }, index * 250); // 250ms delay between each step
+    }
+  });
+}
+
+window.addEventListener("scroll", revealProcess);
+window.addEventListener("load", revealProcess);
+
+// ===========================
+// TRUST SECTION ANIMATION
+// ===========================
+
+const trustItems = document.querySelectorAll(".trust-list li");
+
+function revealTrust() {
+  trustItems.forEach((item, index) => {
+    const itemTop = item.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (itemTop < triggerPoint && !item.classList.contains("active")) {
+      setTimeout(() => {
+        item.classList.add("active");
+      }, index * 200);
+    }
+  });
+}
+
+window.addEventListener("scroll", revealTrust);
+window.addEventListener("load", revealTrust);
+
+// ===========================
+// PRICING FADE IN
+// ===========================
+
+const pricingSection = document.querySelector(".pricing-container");
+
+function revealPricing() {
+  const top = pricingSection.getBoundingClientRect().top;
+  const trigger = window.innerHeight * 0.85;
+
+  if (top < trigger) {
+    pricingSection.style.opacity = "1";
+    pricingSection.style.transform = "translateY(0)";
+  }
+}
+
+pricingSection.style.opacity = "0";
+pricingSection.style.transform = "translateY(40px)";
+pricingSection.style.transition = "all 1s ease";
+
+window.addEventListener("scroll", revealPricing);
+window.addEventListener("load", revealPricing);
+
+// ===========================
+// SNAPSHOT SECTION ANIMATION
+// ===========================
+
+const snapshotCards = document.querySelectorAll(".snapshot-card");
+
+function revealSnapshot() {
+  snapshotCards.forEach((card, index) => {
+    const cardTop = card.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight * 0.85;
+
+    if (cardTop < triggerPoint) {
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, index * 200);
+    }
+  });
+}
+
+window.addEventListener("scroll", revealSnapshot);
+window.addEventListener("load", revealSnapshot);
