@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <title>Vanshi Shah Portfolio</title>
 
   <!-- Tailwind CDN -->
@@ -650,6 +660,87 @@ Process Section
 
     <div class="snapshot-footer">
       Production experience delivering real business websites with performance, security, and clarity at the core.
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ===================
+ Contact Section
+ =======================-->
+
+ <section id="contact" class="contact-section">
+
+  <div class="contact-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="contact-left">
+
+      <span class="contact-label">CONTACT</span>
+
+      <h2 class="contact-title">Let’s Build Something Structured.</h2>
+
+      <h3 class="contact-headline">
+        Have a project in mind? Let’s discuss it.
+      </h3>
+
+      <p class="contact-description">
+        I work with businesses transitioning digitally and teams that value clarity,
+        performance, and long-term maintainability.
+        <br><br>
+        For internships and junior roles, I’m open to contributing where thoughtful
+        design meets structured engineering.
+      </p>
+
+      <div class="contact-direct">
+        <div class="contact-item">
+          <span>Email</span>
+          <a href="mailto:vanshishah210@gmail.com">
+            vanshishah210@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <span>Location</span>
+          <p>Ahmedabad, India</p>
+        </div>
+      </div>
+
+      <div class="contact-buttons">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vanshishah210@gmail.com&su=Project%20Discussion%20Request&body=Hello%20Vanshi,%0A%0AI%20am%20reaching%20out%20regarding%20a%20potential%20project.%0A%0AProject%20Type:%0ATimeline:%0ABudget:%0A%0ALooking%20forward%20to%20your%20response."
+          target="_blank"
+        class="contact-btn primary-btn"
+        id="startProjectBtn">
+        Start a Project →
+        </a>
+        <a href="#featured-projects" class="contact-btn secondary-btn">
+          View Work
+        </a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-right">
+
+      <form class="contact-form">
+
+        <label>Name</label>
+        <input type="text" placeholder="Your name" required>
+
+        <label>Email</label>
+        <input type="email" placeholder="your.email@example.com" required>
+
+        <label>Message</label>
+        <textarea placeholder="Tell me about your project..." required></textarea>
+
+        <button type="submit" class="form-btn">
+          Send Message →
+        </button>
+
+      </form>
+
     </div>
 
   </div>

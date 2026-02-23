@@ -351,3 +351,351 @@ function revealSnapshot() {
 
 window.addEventListener("scroll", revealSnapshot);
 window.addEventListener("load", revealSnapshot);
+
+// ===========================
+// CONTACT REVEAL
+// ===========================
+
+const contactSection = document.querySelector(".contact-container");
+
+function revealContact() {
+  const top = contactSection.getBoundingClientRect().top;
+  const trigger = window.innerHeight * 0.85;
+
+  if (top < trigger) {
+    contactSection.style.opacity = "1";
+    contactSection.style.transform = "translateY(0)";
+  }
+}
+
+contactSection.style.opacity = "0";
+contactSection.style.transform = "translateY(40px)";
+contactSection.style.transition = "all 1s ease";
+
+window.addEventListener("scroll", revealContact);
+window.addEventListener("load", revealContact);
+
+// ===========================
+// CONTACT FORM VALIDATION
+// ===========================
+
+/*const form = document.querySelector(".contact-form");
+const inputs = form.querySelectorAll("input, textarea");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  let isValid = true;
+
+  inputs.forEach(input => {
+    if (input.value.trim() === "") {
+      showError(input, "This field is required");
+      isValid = false;
+    } else {
+      clearError(input);
+    }
+
+    if (input.type === "email" && !validateEmail(input.value)) {
+      showError(input, "Enter a valid email address");
+      isValid = false;
+    }
+  });
+
+  if (isValid) {
+    sendToGoogleSheets();
+  }
+});
+
+function showError(input, message) {
+  input.style.borderColor = "#ff4d4d";
+  input.nextElementSibling?.remove();
+
+  const error = document.createElement("small");
+  error.style.color = "#ff4d4d";
+  error.style.display = "block";
+  error.style.marginTop = "6px";
+  error.innerText = message;
+
+  input.after(error);
+}
+
+function clearError(input) {
+  input.style.borderColor = "rgba(91, 140, 255, 0.2)";
+  if (input.nextElementSibling?.tagName === "SMALL") {
+    input.nextElementSibling.remove();
+  }
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}*/
+
+//https://script.google.com/macros/s/AKfycbyVaBA2OBsgqecA97o3HMEJNrTrDXemzOlSgi39VkK-FdC7NZ0mgFcpJ624WhTCXQl3rg/exec
+// ===========================
+// CONTACT FORM - GOOGLE SHEETS INTEGRATION
+// ===========================
+
+// ===========================
+// CONTACT FORM VALIDATION + GOOGLE SHEETS
+// ===========================
+
+/*const form = document.querySelector(".contact-form");
+const inputs = form.querySelectorAll("input, textarea");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  let isValid = true;
+
+  inputs.forEach(input => {
+    clearError(input);
+
+    if (input.value.trim() === "") {
+      showError(input, "This field is required");
+      isValid = false;
+    }
+
+    if (input.type === "email" && !validateEmail(input.value)) {
+      showError(input, "Enter a valid email address");
+      isValid = false;
+    }
+  });
+
+  if (isValid) {
+    sendToGoogleSheets();
+  }
+});
+
+// ===========================
+// ERROR HANDLING
+// ===========================
+
+function showError(input, message) {
+  input.style.borderColor = "#ff4d4d";
+
+  const error = document.createElement("small");
+  error.style.color = "#ff4d4d";
+  error.style.display = "block";
+  error.style.marginTop = "6px";
+  error.innerText = message;
+
+  input.after(error);
+}
+
+function clearError(input) {
+  input.style.borderColor = "rgba(91, 140, 255, 0.2)";
+  const next = input.nextElementSibling;
+  if (next && next.tagName === "SMALL") {
+    next.remove();
+  }
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// ===========================
+// SEND TO GOOGLE SHEETS
+// ===========================
+
+function sendToGoogleSheets() {
+
+  const name = form.querySelector('input[type="text"]').value;
+  const email = form.querySelector('input[type="email"]').value;
+  const message = form.querySelector('textarea').value;
+
+  fetch("https://script.google.com/macros/s/AKfycbyVaBA2OBsgqecA97o3HMEJNrTrDXemzOlSgi39VkK-FdC7NZ0mgFcpJ624WhTCXQl3rg/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      message: message
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+
+    // PREMIUM SUCCESS UI (instead of alert)
+    form.innerHTML = `
+      <div style="
+        text-align:center;
+        padding:60px 20px;
+        color:#5B8CFF;
+        font-size:20px;
+        line-height:1.6;
+      ">
+        Message received.<br>
+        I’ll get back to you soon.
+      </div>
+    `;
+
+  })
+  .catch(err => {
+    form.innerHTML = `
+      <div style="
+        text-align:center;
+        padding:60px 20px;
+        color:#ff4d4d;
+        font-size:18px;
+      ">
+        Something went wrong.<br>
+        Please try again later.
+      </div>
+    `;
+  });
+}*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.querySelector(".contact-form");
+
+  if (!form) {
+    console.error("Form not found. Check .contact-form class.");
+    return;
+  }
+
+  const inputs = form.querySelectorAll("input, textarea");
+  const submitBtn = form.querySelector(".form-btn");
+
+  // ===========================
+  // ADD HONEYPOT
+  // ===========================
+
+  const honeypot = document.createElement("input");
+  honeypot.type = "text";
+  honeypot.name = "company";
+  honeypot.style.display = "none";
+  form.appendChild(honeypot);
+
+  const RATE_LIMIT_TIME = 30000;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const lastSubmission = localStorage.getItem("lastSubmissionTime");
+    const now = Date.now();
+
+    if (lastSubmission && now - lastSubmission < RATE_LIMIT_TIME) {
+      showTemporaryMessage("Please wait before sending another message.", false);
+      return;
+    }
+
+    if (honeypot.value !== "") return;
+
+    let isValid = true;
+
+    inputs.forEach(input => {
+      clearError(input);
+
+      if (input.value.trim() === "") {
+        showError(input, "This field is required");
+        isValid = false;
+      }
+
+      if (input.type === "email" && !validateEmail(input.value)) {
+        showError(input, "Enter a valid email address");
+        isValid = false;
+      }
+    });
+
+    if (isValid) {
+      sendToGoogleSheets();
+    }
+  });
+
+  function showError(input, message) {
+    input.style.borderColor = "#ff4d4d";
+
+    const error = document.createElement("small");
+    error.style.color = "#ff4d4d";
+    error.style.display = "block";
+    error.style.marginTop = "6px";
+    error.innerText = message;
+
+    input.after(error);
+  }
+
+  function clearError(input) {
+    input.style.borderColor = "rgba(91, 140, 255, 0.2)";
+    const next = input.nextElementSibling;
+    if (next && next.tagName === "SMALL") next.remove();
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function sendToGoogleSheets() {
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending...";
+
+    const name = form.querySelector('input[type="text"]').value;
+    const email = form.querySelector('input[type="email"]').value;
+    const message = form.querySelector('textarea').value;
+
+    fetch("https://script.google.com/macros/s/AKfycbwA3-ReYi6IIIR68JFODgAzuk9NZhJFBy90IzrouPHHZhJTNNNsQnsWcgWRWXQmKiguxw/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message
+      })
+    })
+    .then(res => res.text())
+    .then(result => {
+
+      localStorage.setItem("lastSubmissionTime", Date.now());
+
+      form.innerHTML = `
+        <div style="
+          text-align:center;
+          padding:60px 20px;
+          color:#5B8CFF;
+          font-size:22px;
+        ">
+          Message received.<br>
+          I’ll get back to you soon.
+        </div>
+      `;
+    })
+    .catch(error => {
+      console.error(error);
+      showTemporaryMessage("Connection failed. Check deployment.", false);
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Send Message →";
+    });
+  }
+
+  function showTemporaryMessage(message, success = true) {
+    const msg = document.createElement("div");
+    msg.style.marginTop = "20px";
+    msg.style.fontSize = "16px";
+    msg.style.color = success ? "#5B8CFF" : "#ff4d4d";
+    msg.innerText = message;
+
+    form.appendChild(msg);
+
+    setTimeout(() => msg.remove(), 4000);
+  }
+
+});
+
+const startBtn = document.getElementById("startProjectBtn");
+
+if (startBtn) {
+  startBtn.addEventListener("click", function () {
+
+    if (typeof gtag === "function") {
+      gtag("event", "start_project_click", {
+        event_category: "CTA",
+        event_label: "Contact Section",
+      });
+    }
+
+  });
+}
