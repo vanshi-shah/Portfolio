@@ -1298,7 +1298,7 @@ body {
   background: rgba(91, 140, 255, 0.06);
   border: 1px solid rgba(91, 140, 255, 0.18);
   backdrop-filter: blur(14px);
-  padding: 50px;
+  padding: 36px;
   border-radius: 18px;
 }
 
@@ -1343,4 +1343,89 @@ body {
 
 .form-btn:hover {
   box-shadow: 0 15px 40px rgba(91, 140, 255, 0.35);
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.footer.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer {
+  background: #0F1226;
+  padding: 100px 9rem 40px;
+  border-top: 1px solid rgba(91, 140, 255, 0.15);
+}
+
+.footer-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 80px;
+}
+
+.footer-col h3 {
+  font-size: 24px;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+}
+
+.brand p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #B7BEDC;
+  max-width: 360px;
+}
+
+.footer-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5B8CFF;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 14px;
+  font-size: 15px;
+  color: #CFD5F1;
+}
+
+.footer-col ul li a {
+  color: #CFD5F1;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #5B8CFF;
+}
+
+.resume-link {
+  font-weight: 500;
+}
+
+.footer-bottom {
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(91, 140, 255, 0.1);
+  text-align: center;
+  font-size: 14px;
+  color: #889AFF;
 }

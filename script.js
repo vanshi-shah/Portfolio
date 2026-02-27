@@ -699,3 +699,17 @@ if (startBtn) {
 
   });
 }
+/* =========================
+   FOOTER SCROLL ANIMATION
+========================= */
+const footer = document.querySelector(".footer");
+
+window.addEventListener("scroll", () => {
+  const trigger = window.innerHeight * 0.9;
+  const footerTop = footer.getBoundingClientRect().top;
+
+  if (footerTop < trigger) {
+    footer.style.opacity = "1";
+    footer.style.transform = "translateY(0)";
+  }
+});
