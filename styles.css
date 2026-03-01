@@ -1,3 +1,27 @@
+/* =========================================
+   GLOBAL MOBILE SAFETY LAYER
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* html stylesheet for the portfolio website*/
 
 html {
@@ -1525,194 +1549,189 @@ body {
 ========================================= */
 
 /* =========================================
-   PROFESSIONAL RESPONSIVE SYSTEM
+   CLEAN MOBILE ARCHITECTURE
 ========================================= */
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
 
-  /* ------------------------
-     GLOBAL TYPOGRAPHY SCALE
-  ------------------------ */
-
-  h1 {
-    font-size: clamp(2rem, 5vw, 3rem) !important;
-  }
-
-  h2 {
-    font-size: clamp(1.6rem, 4.5vw, 2.4rem) !important;
-  }
-
-  h3 {
-    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
-  }
-
-  p {
-    font-size: 1rem !important;
-    line-height: 1.8;
-  }
+  /* ------------------ RESET HARD WIDTHS ------------------ */
 
   section {
-    padding: 90px 6% !important;
+    padding: 80px 20px !important;
   }
 
-  /* ------------------------
-     NAVBAR (HAMBURGER)
-  ------------------------ */
+  .container,
+  .projects-wrapper,
+  .project-layout,
+  .about-container,
+  .contact-container,
+  .snapshot-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ------------------ NAVBAR ------------------ */
 
   .glass-nav {
-    justify-content: space-between;
-    padding: 14px 20px !important;
+    padding: 14px 18px !important;
   }
 
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 75%;
-    background: #0F1226;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    transition: 0.4s ease;
-  }
-
-  .nav-menu.active {
-    right: 0;
-  }
-
-  .nav-link {
-    font-size: 1.2rem;
-  }
-
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-  }
-
-  .hamburger span {
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 3px;
-  }
-
-  /* Hide normal menu on mobile */
   .glass-nav ul {
     display: none;
   }
 
-  .nav-menu {
-    display: flex;
+  /* ------------------ HERO ------------------ */
+
+  .hero {
+    text-align: center;
   }
 
-  /* ------------------------
-     HERO SECTION
-  ------------------------ */
-
   .name-img {
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    width: 90% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
   }
 
   .sub-heading {
-    font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
-    margin-top: 30px;
+    font-size: 1.5rem !important;
   }
 
   .description {
     font-size: 1rem !important;
-    text-align: center;
-    max-width: 100%;
+    max-width: 100% !important;
+    padding: 0 10px !important;
   }
 
   .cta-buttons {
     flex-direction: column;
-    gap: 16px;
+    gap: 14px !important;
     align-items: center;
   }
 
   .primary-btn,
   .secondary-btn {
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
+    width: 100% !important;
+    max-width: 260px !important;
   }
 
-  /* ------------------------
-     PROJECT SECTION
-  ------------------------ */
-
+  /* ------------------ PROJECTS ------------------ */
+.project-slider {
+  overflow: hidden;
+}
   .projects-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 40px;
+    display: block !important;
+  }
+
+  .project-sidebar {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px !important;
+    padding-bottom: 10px !important;
   }
 
   .project-layout {
-    grid-template-columns: 1fr !important;
-    gap: 40px;
+    display: block !important;
+  }
+
+  .project-main {
+    padding: 30px 16px !important;
   }
 
   .project-info h2 {
-    font-size: 1.6rem !important;
+    font-size: 1.5rem !important;
+  }
+
+  .project-desc {
+    max-width: 100% !important;
   }
 
   .slide img {
-    max-height: 250px;
+    width: 100% !important;
+    max-height: 240px !important;
+    object-fit: cover;
   }
 
   .project-cta-right {
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    gap: 12px !important;
+    align-items: center;
   }
 
-  /* ------------------------
-     ABOUT SECTION
-  ------------------------ */
+  /* ------------------ ABOUT ------------------ */
 
   .about-container {
-    flex-direction: column;
-    gap: 40px;
+    display: block !important;
   }
 
   .about-card {
-    width: 100%;
+    position: relative !important;
     top: 0 !important;
+    width: 100% !important;
+    margin-top: 30px !important;
   }
 
-  /* ------------------------
-     SERVICES SLIDER
-  ------------------------ */
+  .about-text p {
+    padding-right: 0 !important;
+  }
+
+  /* ------------------ SERVICES ------------------ */
+
+  .services-slider {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
 
   .service-card {
-    min-width: 260px;
-    padding: 24px;
+    min-width: 85% !important;
+    scroll-snap-align: center;
   }
 
   .slider-btn {
     display: none;
   }
 
-  /* ------------------------
-     SNAPSHOT GRID
-  ------------------------ */
+  /* ------------------ PROCESS ------------------ */
 
-  .snapshot-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px;
+  .process-section {
+    padding: 80px 20px !important;
   }
 
-  /* ------------------------
-     CONTACT
-  ------------------------ */
+  .process-timeline {
+    padding-left: 30px !important;
+  }
+
+  .process-number {
+    left: -35px !important;
+  }
+
+  /* ------------------ SNAPSHOT ------------------ */
+
+  .snapshot-grid {
+    display: block !important;
+  }
+
+  .snapshot-card {
+    margin-bottom: 20px !important;
+  }
+
+  /* ------------------ PRICING ------------------ */
+
+  .pricing-buttons {
+    flex-direction: column;
+    gap: 16px !important;
+    padding-left: 0 !important;
+  }
+
+  /* ------------------ CONTACT ------------------ */
 
   .contact-container {
-    flex-direction: column;
-    gap: 30px;
+    display: block !important;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100% !important;
   }
 
 }
