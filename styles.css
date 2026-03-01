@@ -1518,3 +1518,259 @@ body {
   font-size: 14px;
   color: #889AFF;
 }
+
+/* =========================================
+   MOBILE RESPONSIVE LAYER
+   (Does NOT affect desktop view)
+========================================= */
+
+@media (max-width: 1024px) {
+
+  /* Global spacing adjustment */
+  section {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+
+  /* =========================
+     NAVBAR
+  ========================= */
+
+  .navbar-fixed {
+    top: 20px;
+  }
+
+  .glass-nav {
+    padding: 12px 20px !important;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+
+  /* =========================
+     HERO SECTION
+  ========================= */
+
+  .name-img {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .sub-heading {
+    font-size: 1.6rem !important;
+    margin-top: 30px;
+  }
+
+  .description {
+    font-size: 1rem !important;
+    line-height: 1.8;
+    text-align: center !important;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+
+  /* =========================
+     PROJECT SECTION
+  ========================= */
+
+  .projects-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+
+  .project-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .project-tab {
+    font-size: 14px;
+  }
+
+  .project-layout {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+
+  .project-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .project-desc {
+    max-width: 100%;
+  }
+
+  .project-main {
+    padding: 40px 20px;
+  }
+
+  .slide img {
+    max-height: 300px;
+  }
+
+  .project-cta-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* =========================
+     ABOUT SECTION
+  ========================= */
+
+  .about-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-heading {
+    font-size: 2rem;
+  }
+
+  .about-tag {
+    font-size: 2rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+  .about-card {
+    width: 100%;
+    top: 0 !important;
+  }
+
+  /* =========================
+     SERVICES
+  ========================= */
+
+  .services-heading {
+    font-size: 2.4rem;
+  }
+
+  .services-tag {
+    font-size: 2rem;
+  }
+
+  .services-subtext {
+    font-size: 1rem;
+  }
+
+  .services-slider-container {
+    height: auto;
+  }
+
+  .service-card {
+    min-width: 280px;
+    height: auto;
+    padding: 30px;
+  }
+
+  .slider-btn.left,
+  .slider-btn.right {
+    display: none;
+  }
+
+  /* =========================
+     PROCESS
+  ========================= */
+
+  .process-section {
+    padding: 100px 5%;
+  }
+
+  .process-header h2 {
+    font-size: 2rem;
+  }
+
+  .process-label {
+    font-size: 2rem;
+  }
+
+  .process-timeline {
+    padding-left: 40px;
+  }
+
+  .process-number {
+    left: -50px;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  /* =========================
+     TRUST SECTION
+  ========================= */
+
+  .trust-heading {
+    font-size: 2rem;
+  }
+
+  .trust-content h3 {
+    font-size: 1.2rem;
+  }
+
+  /* =========================
+     PRICING
+  ========================= */
+
+  .pricing-section {
+    padding: 100px 5%;
+  }
+
+  .pricing-title {
+    font-size: 2rem;
+  }
+
+  .pricing-highlight {
+    font-size: 2.2rem;
+    padding-left: 0 !important;
+  }
+
+  .pricing-buttons {
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 0 !important;
+  }
+
+  /* =========================
+     SNAPSHOT
+  ========================= */
+
+  .snapshot-section {
+    padding: 100px 5%;
+  }
+
+  .snapshot-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .snapshot-header h2 {
+    font-size: 2rem;
+  }
+
+  .snapshot-label {
+    font-size: 2rem;
+  }
+
+  /* =========================
+     CONTACT
+  ========================= */
+
+  .contact-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+}

@@ -713,3 +713,10 @@ window.addEventListener("scroll", () => {
     footer.style.transform = "translateY(0)";
   }
 });
+
+/*For Mobile*/
+window.addEventListener("resize", () => {
+  document.querySelectorAll(".slides").forEach(slides => {
+    slides.style.transition = "none";
+  });
+});
