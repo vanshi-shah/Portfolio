@@ -343,6 +343,28 @@ body {
 
 /* Slider */
 
+.project-slider-wrapper {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(91, 140, 255, 0.15);
+  background: rgba(15, 18, 38, 0.6);
+}
+
+/* Let content define height */
+.project-slider {
+  width: 100%;
+  position: relative;
+}
+
+/* Image controls height naturally */
+.project-slide img {
+  width: 100%;
+  height: auto;              /* 🔥 KEY */
+  display: block;
+  object-fit: contain;
+  border-radius: 20px;
+}
 .project-slider {
   position: relative;
   overflow: hidden;
@@ -370,6 +392,7 @@ body {
   height: 360px;
   display: flex;
   align-items: center;
+  object-fit: contain;
   justify-content: center;
   background: #1A1F4A;
   color: #B7BEDC;
