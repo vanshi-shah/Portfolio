@@ -720,3 +720,21 @@ window.addEventListener("resize", () => {
     slides.style.transition = "none";
   });
 });
+
+// =========================
+// HAMBURGER MENU
+// =========================
+
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+// Close menu when clicking link
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+  });
+});
