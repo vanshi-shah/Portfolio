@@ -1,4 +1,4 @@
-Vanshi Shah — Portfolio (Work in Progress)
+Vanshi Shah — Portfolio
 
 This repository contains the source code for my personal developer portfolio website.
 
