@@ -7,56 +7,9 @@ document.querySelectorAll('.nav-link').forEach(link => {
   /* =========================
    NAVBAR ACTIVE SECTION
 ========================= */
+
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
-
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 200;
-    const sectionHeight = section.clientHeight;
-
-    if (window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-
-    if (link.getAttribute("onclick").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-
-});
-navLinks.forEach(link => {
-  link.addEventListener("mouseleave", () => {
-    link.style.textShadow = "none";
-  });
-});
-
-
-/*const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-link");
-//new addition
-
-function scrollToSection(id) {
-  const element = document.getElementById(id);
-
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  // remove hash from URL
-  history.replaceState(null, null, ' ');
-}
 
 window.addEventListener("scroll", () => {
 
@@ -85,7 +38,7 @@ window.addEventListener("scroll", () => {
   link.addEventListener('mouseleave', () => {
     link.style.textShadow = "none";
   });
-});*/
+});
 
 // Fade-in on scroll
 const observer = new IntersectionObserver(entries => {
@@ -189,32 +142,6 @@ const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 
 window.addEventListener("scroll", () => {
-
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 150;
-    const sectionHeight = section.offsetHeight;
-
-    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-
-    if (link.getAttribute("onclick").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-
-});
-
-/*const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
   let current = "";
 
   sections.forEach(section => {
@@ -233,7 +160,7 @@ window.addEventListener("scroll", () => {
       link.classList.add("active");
     }
   });
-});*/
+});
 
 /* =========================
    SERVICES SLIDER
