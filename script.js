@@ -98,14 +98,20 @@ document.addEventListener("DOMContentLoaded", function () {
    PROJECT SIDEBAR SWITCH
 ========================= */
 
+/* =========================
+   PROJECT SIDEBAR SWITCH
+========================= */
+
 const tabs = document.querySelectorAll(".project-tab");
 const panels = document.querySelectorAll(".project-panel");
-const projectContainer = document.querySelector(".projects-main");
+const projectContainer = document.querySelector(".projects-wrapper");
 
 let currentIndex = 0;
-let autoSwitch;
+let autoSwitchTimer = null;
+const AUTO_DELAY = 4000;
 
-// function to activate project
+
+// activate a project
 function activateProject(index) {
 
   tabs.forEach(t => t.classList.remove("active"));
@@ -119,33 +125,70 @@ function activateProject(index) {
   currentIndex = index;
 }
 
-// manual click
+
+// next project
+function nextProject() {
+
+  let nextIndex = currentIndex + 1;
+
+  if (nextIndex >= tabs.length) {
+    nextIndex = 0;
+  }
+
+  activateProject(nextIndex);
+}
+
+
+// start auto switching
+function startAutoSwitch() {
+
+  stopAutoSwitch();
+
+  autoSwitchTimer = setInterval(() => {
+    nextProject();
+  }, AUTO_DELAY);
+}
+
+
+// stop auto switching
+function stopAutoSwitch() {
+
+  if (autoSwitchTimer) {
+    clearInterval(autoSwitchTimer);
+    autoSwitchTimer = null;
+  }
+
+}
+
+
+// manual click support
 tabs.forEach((tab, index) => {
+
   tab.addEventListener("click", () => {
+
     activateProject(index);
+
+    // restart timer so it feels natural
+    startAutoSwitch();
+
   });
+
 });
 
-// auto slide
-function startAutoSwitch() {
-  autoSwitch = setInterval(() => {
-    let nextIndex = (currentIndex + 1) % tabs.length;
-    activateProject(nextIndex);
-  }, 4000);
-}
 
-// stop auto slide
-function stopAutoSwitch() {
-  clearInterval(autoSwitch);
-}
+// pause when mouse is anywhere in project container
+projectContainer.addEventListener("mouseenter", () => {
+  stopAutoSwitch();
+});
 
-// pause when hovering ANYWHERE in project section
-projectContainer.addEventListener("mouseenter", stopAutoSwitch);
 
 // resume when mouse leaves
-projectContainer.addEventListener("mouseleave", startAutoSwitch);
+projectContainer.addEventListener("mouseleave", () => {
+  startAutoSwitch();
+});
 
-// start auto sliding
+
+// start automatic sliding
 startAutoSwitch();
 
 /* =========================
