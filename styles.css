@@ -1743,18 +1743,12 @@ body {
 ========================= */
 
 .project-panel{
-  position:absolute;
-  inset:0;
-
   opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-
-  transition:opacity 0.45s ease;
+  transform:translateY(8px);
+  transition:opacity 0.45s ease, transform 0.45s ease;
 }
 
 .project-panel.active{
   opacity:1;
-  visibility:visible;
-  pointer-events:auto;
+  transform:translateY(0);
 }
