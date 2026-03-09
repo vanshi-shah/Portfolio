@@ -97,8 +97,36 @@ document.addEventListener("DOMContentLoaded", function () {
 const tabs = document.querySelectorAll(".project-tab");
 const panels = document.querySelectorAll(".project-panel");
 
-tabs.forEach(tab => {
+let currentProject = 0;
+let projectInterval;
+
+function showProject(index) {
+
+  tabs.forEach(t => t.classList.remove("active"));
+  panels.forEach(p => p.classList.remove("active"));
+
+  tabs[index].classList.add("active");
+  panels[index].classList.add("active");
+
+  currentProject = index;
+}
+
+function nextProject() {
+  let next = (currentProject + 1) % tabs.length;
+  showProject(next);
+}
+
+function startProjectAutoSlide() {
+  projectInterval = setInterval(nextProject, 4000); // change every 4s
+}
+
+startProjectAutoSlide();
+
+tabs.forEach((tab, index) => {
   tab.addEventListener("click", () => {
+
+    clearInterval(projectInterval);
+
     const target = tab.dataset.project;
 
     tabs.forEach(t => t.classList.remove("active"));
@@ -106,7 +134,18 @@ tabs.forEach(tab => {
 
     tab.classList.add("active");
     document.getElementById(target).classList.add("active");
+
+    currentProject = index;
+
+    startProjectAutoSlide();
   });
+});
+
+
+const projectContainer = document.querySelector(".projects-wrapper");
+
+projectContainer.addEventListener("mouseleave", () => {
+  nextProject();
 });
 
 /* =========================
@@ -714,27 +753,4 @@ window.addEventListener("scroll", () => {
   }
 });
 
-/*For Mobile*/
-window.addEventListener("resize", () => {
-  document.querySelectorAll(".slides").forEach(slides => {
-    slides.style.transition = "none";
-  });
-});
 
-// =========================
-// HAMBURGER MENU
-// =========================
-
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-
-hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
-});
-
-// Close menu when clicking link
-document.querySelectorAll(".nav-link").forEach(link => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("active");
-  });
-});
