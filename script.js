@@ -106,13 +106,17 @@ document.addEventListener("DOMContentLoaded", function () {
    PROJECT SIDEBAR SWITCH
 ========================= */
 
+/* =========================
+   PROJECT SIDEBAR SWITCH
+========================= */
+
 const tabs = document.querySelectorAll(".project-tab");
 const panels = document.querySelectorAll(".project-panel");
 const projectMain = document.querySelector(".projects-main");
 
 let currentIndex = 0;
 let autoSwitchTimer = null;
-const AUTO_DELAY = 4000;
+const PROJECT_DELAY = 4000;
 
 
 // activate project
@@ -124,9 +128,35 @@ function activateProject(index) {
   tabs[index].classList.add("active");
 
   const target = tabs[index].dataset.project;
-  document.getElementById(target).classList.add("active");
+  const panel = document.getElementById(target);
+
+  panel.classList.add("active");
 
   currentIndex = index;
+
+  startProjectTimer(panel);
+}
+
+
+// check if panel has slider
+function startProjectTimer(panel) {
+
+  stopAutoSwitch();
+
+  const slider = panel.querySelector(".project-slider");
+
+  if (!slider) {
+
+    autoSwitchTimer = setTimeout(nextProject, PROJECT_DELAY);
+    return;
+
+  }
+
+  const slides = slider.querySelectorAll(".slide");
+
+  const sliderDuration = slides.length * 2500;
+
+  autoSwitchTimer = setTimeout(nextProject, sliderDuration);
 }
 
 
@@ -139,23 +169,11 @@ function nextProject() {
 }
 
 
-// start auto switching
-function startAutoSwitch() {
-
-  stopAutoSwitch();
-
-  autoSwitchTimer = setInterval(() => {
-    nextProject();
-  }, AUTO_DELAY);
-
-}
-
-
 // stop auto switching
 function stopAutoSwitch() {
 
   if (autoSwitchTimer) {
-    clearInterval(autoSwitchTimer);
+    clearTimeout(autoSwitchTimer);
     autoSwitchTimer = null;
   }
 
@@ -167,43 +185,33 @@ tabs.forEach((tab, index) => {
 
   tab.addEventListener("click", (e) => {
 
-    // Ignore clicks from image slider controls
     if (e.target.closest(".project-slider")) return;
 
     activateProject(index);
-    startAutoSwitch();
 
   });
 
 });
 
 
-// pause when hovering on project main
-projectMain.addEventListener("mouseenter", (e) => {
-
-  // allow slider interaction without stopping it
-  if (e.target.closest(".project-slider")) return;
-
+// pause when hovering project main
+projectMain.addEventListener("mouseenter", () => {
   stopAutoSwitch();
-
 });
 
 
-// instantly change when mouse leaves
+// resume when leaving
 projectMain.addEventListener("mouseleave", () => {
 
-  stopAutoSwitch();
-
-  // wait slightly so internal sliders don't reset
-  setTimeout(() => {
-    nextProject();
-    startAutoSwitch();
-  }, 50);
+  const activePanel = panels[currentIndex];
+  startProjectTimer(activePanel);
 
 });
 
-// start automatic sliding
-startAutoSwitch();
+
+// start first project timer
+activateProject(0);
+
 
 /* =========================
    PROJECT IMAGE SLIDERS
@@ -217,20 +225,50 @@ document.querySelectorAll(".project-slider").forEach(slider => {
   const next = slider.querySelector(".next");
 
   let index = 0;
+  let autoSlide;
 
   function updateSlide() {
     slides.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  next.addEventListener("click", () => {
+  function nextSlide() {
     index = (index + 1) % slideItems.length;
     updateSlide();
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slideItems.length) % slideItems.length;
+    updateSlide();
+  }
+
+  next.addEventListener("click", () => {
+    nextSlide();
+    restartAuto();
   });
 
   prev.addEventListener("click", () => {
-    index = (index - 1 + slideItems.length) % slideItems.length;
-    updateSlide();
+    prevSlide();
+    restartAuto();
   });
+
+  function startAuto() {
+    autoSlide = setInterval(nextSlide, 2500);
+  }
+
+  function restartAuto() {
+    clearInterval(autoSlide);
+    startAuto();
+  }
+
+  slider.addEventListener("mouseenter", () => {
+    clearInterval(autoSlide);
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    startAuto();
+  });
+
+  startAuto();
 
 });
 
