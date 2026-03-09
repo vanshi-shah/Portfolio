@@ -184,6 +184,7 @@ projectMain.addEventListener("mouseenter", () => {
 // instantly change when mouse leaves
 projectMain.addEventListener("mouseleave", () => {
 
+  stopAutoSwitch();    // just in case.
   nextProject();      // instant change
   startAutoSwitch();  // then continue normal cycle
 
