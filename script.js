@@ -94,59 +94,59 @@ document.addEventListener("DOMContentLoaded", function () {
    PROJECT SIDEBAR SWITCH
 ========================= */
 
+/* =========================
+   PROJECT SIDEBAR SWITCH
+========================= */
+
 const tabs = document.querySelectorAll(".project-tab");
 const panels = document.querySelectorAll(".project-panel");
+const projectContainer = document.querySelector(".projects-main");
 
-let currentProject = 0;
-let projectInterval;
+let currentIndex = 0;
+let autoSwitch;
 
-function showProject(index) {
+// function to activate project
+function activateProject(index) {
 
   tabs.forEach(t => t.classList.remove("active"));
   panels.forEach(p => p.classList.remove("active"));
 
   tabs[index].classList.add("active");
-  panels[index].classList.add("active");
 
-  currentProject = index;
+  const target = tabs[index].dataset.project;
+  document.getElementById(target).classList.add("active");
+
+  currentIndex = index;
 }
 
-function nextProject() {
-  let next = (currentProject + 1) % tabs.length;
-  showProject(next);
-}
-
-function startProjectAutoSlide() {
-  projectInterval = setInterval(nextProject, 4000); // change every 4s
-}
-
-startProjectAutoSlide();
-
+// manual click
 tabs.forEach((tab, index) => {
   tab.addEventListener("click", () => {
-
-    clearInterval(projectInterval);
-
-    const target = tab.dataset.project;
-
-    tabs.forEach(t => t.classList.remove("active"));
-    panels.forEach(p => p.classList.remove("active"));
-
-    tab.classList.add("active");
-    document.getElementById(target).classList.add("active");
-
-    currentProject = index;
-
-    startProjectAutoSlide();
+    activateProject(index);
   });
 });
 
+// auto slide
+function startAutoSwitch() {
+  autoSwitch = setInterval(() => {
+    let nextIndex = (currentIndex + 1) % tabs.length;
+    activateProject(nextIndex);
+  }, 4000);
+}
 
-const projectContainer = document.querySelector(".projects-wrapper");
+// stop auto slide
+function stopAutoSwitch() {
+  clearInterval(autoSwitch);
+}
 
-projectContainer.addEventListener("mouseleave", () => {
-  nextProject();
-});
+// pause when hovering ANYWHERE in project section
+projectContainer.addEventListener("mouseenter", stopAutoSwitch);
+
+// resume when mouse leaves
+projectContainer.addEventListener("mouseleave", startAutoSwitch);
+
+// start auto sliding
+startAutoSwitch();
 
 /* =========================
    PROJECT IMAGE SLIDERS
