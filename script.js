@@ -165,7 +165,10 @@ function stopAutoSwitch() {
 // manual clicking
 tabs.forEach((tab, index) => {
 
-  tab.addEventListener("click", () => {
+  tab.addEventListener("click", (e) => {
+
+    // Ignore clicks from image slider controls
+    if (e.target.closest(".project-slider")) return;
 
     activateProject(index);
     startAutoSwitch();
@@ -176,8 +179,13 @@ tabs.forEach((tab, index) => {
 
 
 // pause when hovering on project main
-projectMain.addEventListener("mouseenter", () => {
+projectMain.addEventListener("mouseenter", (e) => {
+
+  // allow slider interaction without stopping it
+  if (e.target.closest(".project-slider")) return;
+
   stopAutoSwitch();
+
 });
 
 
