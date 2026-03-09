@@ -783,20 +783,19 @@ body {
 
 /* Buttons */
 
-.slider-btn {
+/* ✅ Add z-index so buttons render above slides */
+.slide-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 58px;
-  height: 58px;
+  background: rgba(25, 36, 61, 0.176);
+  border: none;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  border: 1px solid rgba(120,150,255,0.3);
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
-  font-size: 1.8rem;
-  color: #f5f5f5;
   cursor: pointer;
-  transition: all 0.3s ease;
+  color: rgb(151, 221, 251);
+  z-index: 10;  /* ← ADD THIS */
 }
 
 .slider-btn.left { left: -80px; }

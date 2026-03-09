@@ -1,40 +1,9 @@
 // Simple scroll effect (future extensibility)
+// ✅ FIXED — hover handlers only, scroll listener is separate
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('mouseenter', () => {
     link.style.textShadow = "0 0 10px rgba(91,140,255,0.7)";
   });
-
-  /* =========================
-   NAVBAR ACTIVE SECTION
-========================= */
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
-
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 200;
-    const sectionHeight = section.clientHeight;
-
-    if (window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-
-    if (link.getAttribute("href").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-
-});
-
   link.addEventListener('mouseleave', () => {
     link.style.textShadow = "none";
   });
@@ -116,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const tabs = document.querySelectorAll(".project-tab");
 const panels = document.querySelectorAll(".project-panel");
-const projectMain = document.querySelector(".projects-main");
+const projectMain = document.querySelector(".project-main");
 
 let currentIndex = 0;
 let autoSwitchTimer;
