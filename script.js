@@ -110,13 +110,17 @@ document.addEventListener("DOMContentLoaded", function () {
    PROJECT SIDEBAR SWITCH
 ========================= */
 
+/* =========================
+   PROJECT SIDEBAR SWITCH
+========================= */
+
 const tabs = document.querySelectorAll(".project-tab");
 const panels = document.querySelectorAll(".project-panel");
 const projectMain = document.querySelector(".projects-main");
 
 let currentIndex = 0;
-let autoSwitchTimer = null;
-const PROJECT_DELAY = 4000;
+let autoSwitchTimer;
+const AUTO_DELAY = 4000;
 
 
 // activate project
@@ -128,67 +132,54 @@ function activateProject(index) {
   tabs[index].classList.add("active");
 
   const target = tabs[index].dataset.project;
-  const panel = document.getElementById(target);
-
-  panel.classList.add("active");
+  document.getElementById(target).classList.add("active");
 
   currentIndex = index;
 
-  startProjectTimer(panel);
-}
-
-
-// check if panel has slider
-function startProjectTimer(panel) {
-
-  stopAutoSwitch();
-
-  const slider = panel.querySelector(".project-slider");
-
-  if (!slider) {
-
-    autoSwitchTimer = setTimeout(nextProject, PROJECT_DELAY);
-    return;
-
-  }
-
-  const slides = slider.querySelectorAll(".slide");
-
-  const sliderDuration = slides.length * 2500;
-
-  autoSwitchTimer = setTimeout(nextProject, sliderDuration);
+  startAutoSwitch();
 }
 
 
 // next project
 function nextProject() {
 
-  let nextIndex = (currentIndex + 1) % tabs.length;
+  const nextIndex = (currentIndex + 1) % tabs.length;
   activateProject(nextIndex);
 
 }
 
 
-// stop auto switching
-function stopAutoSwitch() {
+// start auto switch
+function startAutoSwitch() {
 
-  if (autoSwitchTimer) {
-    clearTimeout(autoSwitchTimer);
-    autoSwitchTimer = null;
+  clearTimeout(autoSwitchTimer);
+
+  const activePanel = panels[currentIndex];
+
+  // if slider exists inside project
+  const slider = activePanel.querySelector(".project-slider");
+
+  if (slider) {
+
+    const slides = slider.querySelectorAll(".slide").length;
+
+    // wait for slider cycle
+    autoSwitchTimer = setTimeout(nextProject, slides * 2500);
+
+  } else {
+
+    autoSwitchTimer = setTimeout(nextProject, AUTO_DELAY);
+
   }
 
 }
 
 
-// manual clicking
+// manual tab click
 tabs.forEach((tab, index) => {
 
-  tab.addEventListener("click", (e) => {
-
-    if (e.target.closest(".project-slider")) return;
-
+  tab.addEventListener("click", () => {
     activateProject(index);
-
   });
 
 });
@@ -196,22 +187,22 @@ tabs.forEach((tab, index) => {
 
 // pause when hovering project main
 projectMain.addEventListener("mouseenter", () => {
-  stopAutoSwitch();
+  clearTimeout(autoSwitchTimer);
 });
 
 
 // resume when leaving
 projectMain.addEventListener("mouseleave", () => {
-
-  const activePanel = panels[currentIndex];
-  startProjectTimer(activePanel);
-
+  startAutoSwitch();
 });
 
 
-// start first project timer
+// start first cycle
 activateProject(0);
 
+/* =========================
+   PROJECT IMAGE SLIDERS
+========================= */
 
 /* =========================
    PROJECT IMAGE SLIDERS
@@ -241,12 +232,14 @@ document.querySelectorAll(".project-slider").forEach(slider => {
     updateSlide();
   }
 
-  next.addEventListener("click", () => {
+  next.addEventListener("click", e => {
+    e.stopPropagation();
     nextSlide();
     restartAuto();
   });
 
-  prev.addEventListener("click", () => {
+  prev.addEventListener("click", e => {
+    e.stopPropagation();
     prevSlide();
     restartAuto();
   });
@@ -271,6 +264,8 @@ document.querySelectorAll(".project-slider").forEach(slider => {
   startAuto();
 
 });
+
+//Navbar Updates
 
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
