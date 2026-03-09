@@ -102,16 +102,20 @@ document.addEventListener("DOMContentLoaded", function () {
    PROJECT SIDEBAR SWITCH
 ========================= */
 
+/* =========================
+   PROJECT SIDEBAR SWITCH
+========================= */
+
 const tabs = document.querySelectorAll(".project-tab");
 const panels = document.querySelectorAll(".project-panel");
-const projectContainer = document.querySelector(".projects-wrapper");
+const projectMain = document.querySelector(".projects-main");
 
 let currentIndex = 0;
 let autoSwitchTimer = null;
 const AUTO_DELAY = 4000;
 
 
-// activate a project
+// activate project
 function activateProject(index) {
 
   tabs.forEach(t => t.classList.remove("active"));
@@ -129,13 +133,9 @@ function activateProject(index) {
 // next project
 function nextProject() {
 
-  let nextIndex = currentIndex + 1;
-
-  if (nextIndex >= tabs.length) {
-    nextIndex = 0;
-  }
-
+  let nextIndex = (currentIndex + 1) % tabs.length;
   activateProject(nextIndex);
+
 }
 
 
@@ -147,6 +147,7 @@ function startAutoSwitch() {
   autoSwitchTimer = setInterval(() => {
     nextProject();
   }, AUTO_DELAY);
+
 }
 
 
@@ -161,14 +162,12 @@ function stopAutoSwitch() {
 }
 
 
-// manual click support
+// manual clicking
 tabs.forEach((tab, index) => {
 
   tab.addEventListener("click", () => {
 
     activateProject(index);
-
-    // restart timer so it feels natural
     startAutoSwitch();
 
   });
@@ -176,15 +175,18 @@ tabs.forEach((tab, index) => {
 });
 
 
-// pause when mouse is anywhere in project container
-projectContainer.addEventListener("mouseenter", () => {
+// pause when hovering on project main
+projectMain.addEventListener("mouseenter", () => {
   stopAutoSwitch();
 });
 
 
-// resume when mouse leaves
-projectContainer.addEventListener("mouseleave", () => {
-  startAutoSwitch();
+// instantly change when mouse leaves
+projectMain.addEventListener("mouseleave", () => {
+
+  nextProject();      // instant change
+  startAutoSwitch();  // then continue normal cycle
+
 });
 
 

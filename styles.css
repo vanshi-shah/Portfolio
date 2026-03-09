@@ -1736,3 +1736,19 @@ body {
   }
 
 }
+
+
+/* =========================
+   PROJECT FADE ANIMATION
+========================= */
+
+.project-panel{
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity 0.45s ease, transform 0.45s ease;
+}
+
+.project-panel.active{
+  opacity:1;
+  transform:translateY(0);
+}
