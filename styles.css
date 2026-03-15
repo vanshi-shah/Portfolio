@@ -556,6 +556,10 @@ body {
    ABOUT SECTION — FIXED
 ========================= */
 
+/* =========================
+   ABOUT SECTION — FIXED
+========================= */
+
 .about-section {
   padding: 140px 8%;
 }
@@ -563,16 +567,18 @@ body {
 .about-container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 60px;
-  align-items: flex-start;   /* keeps left text top-aligned */
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;            /* centers the block */
 }
 
-/* LEFT SIDE */
+/* LEFT */
 
 .about-left {
-  max-width: 600px;
-  flex: 1 1 400px;           /* grows/shrinks gracefully */
+  flex: 1 1 420px;
+  max-width: 640px;
 }
 
 .about-tag {
@@ -580,7 +586,7 @@ body {
   font-size: 3.8rem;
   letter-spacing: 2px;
   color: #5B8CFF;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   display: block;
 }
 
@@ -588,8 +594,8 @@ body {
   font-family: 'Lancelot', cursive;
   font-size: 3.6rem;
   line-height: 1.15;
-  margin-bottom: 48px;
   color: #F2F4FF;
+  margin-bottom: 48px;
 }
 
 .about-text {
@@ -603,39 +609,39 @@ body {
   font-size: 1.15rem;
   line-height: 1.9;
   color: #B7BEDC;
-  max-width: 580px;
 }
 
 .about-text .muted {
   opacity: 0.65;
 }
 
-/* RIGHT CARD — FIXED: removed top: 250px, now uses sticky positioning */
+/* RIGHT CARD */
 
 .about-card {
-  position: sticky;          /* sticks as user scrolls through long left text */
-  top: 120px;                /* sits just below the fixed navbar */
+  position: sticky;
+  top: 120px;                /* sits just under fixed navbar */
+  align-self: flex-start;   /* prevents card from stretching */
+  flex-shrink: 0;
+  width: 320px;
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(91, 140, 255, 0.15);
-  padding: 40px;
   border-radius: 20px;
-  width: 340px;
-  flex-shrink: 0;
+  padding: 40px;
   box-shadow: 0 0 30px rgba(91, 140, 255, 0.08);
-  align-self: flex-start;    /* critical: prevents card from stretching full height */
 }
 
 .about-card h4 {
   font-family: 'Adamina', serif;
   font-size: 1.2rem;
-  margin-bottom: 20px;
   color: #F2F4FF;
+  margin-bottom: 24px;
 }
 
 .about-card ul {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -652,7 +658,7 @@ body {
   color: #5B8CFF;
 }
 
-/* Scroll fade-in animations (unchanged) */
+/* Fade-in animations */
 
 .hidden-section {
   opacity: 0;
@@ -668,12 +674,16 @@ body {
 /* Mobile */
 
 @media (max-width: 768px) {
+  .about-section {
+    padding: 80px 24px !important;
+  }
+
   .about-container {
     display: block !important;
   }
 
   .about-card {
-    position: relative !important; /* sticky doesn't work well in single-column */
+    position: relative !important;
     top: 0 !important;
     width: 100% !important;
     margin-top: 40px !important;
