@@ -553,7 +553,7 @@ body {
 
 
 /* =========================
-   ABOUT SECTION
+   ABOUT SECTION — FIXED
 ========================= */
 
 .about-section {
@@ -563,15 +563,16 @@ body {
 .about-container {
   display: flex;
   justify-content: space-between;
-  gap: 80px;
-  align-items: flex-start;
+  gap: 60px;
+  align-items: flex-start;   /* keeps left text top-aligned */
   flex-wrap: wrap;
 }
 
 /* LEFT SIDE */
 
 .about-left {
-  max-width: 620px;
+  max-width: 600px;
+  flex: 1 1 400px;           /* grows/shrinks gracefully */
 }
 
 .about-tag {
@@ -580,6 +581,7 @@ body {
   letter-spacing: 2px;
   color: #5B8CFF;
   margin-bottom: 20px;
+  display: block;
 }
 
 .about-heading {
@@ -590,52 +592,50 @@ body {
   color: #F2F4FF;
 }
 
-.about-section .about-text p {
-  font-size: 1.4rem;
-  line-height: 2;
-}
-
 .about-text {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
 }
 
 .about-text p {
   font-family: 'Adamina', serif;
-  font-size: 1.25rem;
-  line-height: 2;
+  font-size: 1.15rem;
+  line-height: 1.9;
   color: #B7BEDC;
-  max-width: 600px;
+  max-width: 580px;
 }
 
 .about-text .muted {
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
-/* RIGHT CARD */
+/* RIGHT CARD — FIXED: removed top: 250px, now uses sticky positioning */
 
 .about-card {
-  position: relative;
-  background: rgba(255,255,255,0.04);
+  position: sticky;          /* sticks as user scrolls through long left text */
+  top: 120px;                /* sits just below the fixed navbar */
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(91, 140, 255, 0.15);
   padding: 40px;
   border-radius: 20px;
-  width: 380px;
-  top: 250px;
+  width: 340px;
+  flex-shrink: 0;
   box-shadow: 0 0 30px rgba(91, 140, 255, 0.08);
+  align-self: flex-start;    /* critical: prevents card from stretching full height */
 }
 
 .about-card h4 {
   font-family: 'Adamina', serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-bottom: 20px;
   color: #F2F4FF;
 }
 
 .about-card ul {
   list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -643,24 +643,49 @@ body {
 
 .about-card li {
   font-family: 'Adamina', serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #CFD5F1;
+  line-height: 1.5;
 }
 
 .about-card li span {
   color: #5B8CFF;
 }
 
+/* Scroll fade-in animations (unchanged) */
+
 .hidden-section {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
-  top:0px !important;
 }
 
 .fade-in {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .about-container {
+    display: block !important;
+  }
+
+  .about-card {
+    position: relative !important; /* sticky doesn't work well in single-column */
+    top: 0 !important;
+    width: 100% !important;
+    margin-top: 40px !important;
+  }
+
+  .about-heading {
+    font-size: 2.4rem !important;
+  }
+
+  .about-tag {
+    font-size: 2.6rem !important;
+  }
 }
 
 /* =========================
