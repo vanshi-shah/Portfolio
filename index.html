@@ -43,41 +43,6 @@
   </div>
 </nav>
 
-<!-- Navbar
-<nav class="navbar-fixed">
-  <div class="glass-nav flex rounded-full">
-
-    <a href="#" class="nav-link" onclick="scrollToSection('featured-projects')">Projects</a>
-    <a href="#" class="nav-link" onclick="scrollToSection('services')">Services</a>
-    <a href="#" class="nav-link" onclick="scrollToSection('process')">Process</a>
-    <a href="#" class="nav-link" onclick="scrollToSection('pricing')">Pricing</a>
-    <a href="#" class="nav-link" onclick="scrollToSection('technical-snapshot')">Skills</a>
-    <a href="#" class="nav-link" onclick="scrollToSection('contact')">Contact</a>
-
-  </div>
-</nav> -->
-
-<!--<nav class="navbar-fixed">
-  <div class="glass-nav">
-    
-    <div class="logo">Vanshi Shah</div>
-
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-
-  </div>
-</nav>-->
-
   <!-- Hero Section -->
  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20 pb-40">
 
@@ -131,7 +96,9 @@
     <div class="project-sidebar">
       <h3 class="sidebar-title">Selected Work</h3>
 
-      <button class="project-tab active" data-project="taksh">Taksh Enterprise</button>
+      <!-- Noir Essence is now FIRST and active -->
+      <button class="project-tab active" data-project="noir-essence">Noir Essence</button>
+      <button class="project-tab" data-project="taksh">Taksh Enterprise</button>
       <button class="project-tab" data-project="mindform">MindForm Studio</button>
       <button class="project-tab" data-project="weather">Weather App</button>
       <button class="project-tab" data-project="starbucks">Starbucks Matcha</button>
@@ -141,8 +108,106 @@
     <!-- MAIN CONTENT -->
     <div class="project-main">
 
+      <!-- ==============================
+           NOIR ESSENCE — HERO PROJECT
+      ============================== -->
+      <div class="project-panel active" id="noir-essence">
+        <div class="project-layout">
+
+          <div class="project-info">
+            <h2>Noir Essence</h2>
+            <p class="role">Brand Identity · UI/UX Design · Frontend Development</p>
+
+            <p class="project-desc">
+              A concept luxury perfume brand built entirely from scratch — 
+              every visual asset, poster, and page designed in Figma and 
+              developed in HTML, CSS, and JavaScript. The challenge: make 
+              a student project feel genuinely premium. Dark, editorial, 
+              and brand-forward, targeting women aged 18–25 who buy 
+              <span style="color:#5B8CFF;">atmosphere</span>, not just fragrance.
+            </p>
+          </div>
+
+          <!-- SLIDER — 9 image placeholders -->
+          <div class="project-slider" data-slider="noir-essence">
+            <div class="slides">
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Hero — Landing</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Product Poster 01</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Product Poster 02</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Product Poster 03</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Collections Page</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Product Showcase</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Shopping Bag</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>About the Process</span>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-placeholder">
+                  <span>Article / Blog</span>
+                </div>
+              </div>
+
+            </div>
+            <button class="slide-btn prev">‹</button>
+            <button class="slide-btn next">›</button>
+          </div>
+
+          <!-- CTA — Two buttons -->
+          <div class="project-cta-right">
+            <button class="project-btn primary-btn"
+              onclick="window.open('https://noir-essence-perfume.vercel.app/', '_blank')">
+              View Site ↗
+            </button>
+            <button class="secondary-btn"
+              onclick="window.open('Case_Study_Noir_Essence.pdf', '_blank')">
+              View Case Study
+            </button>
+          </div>
+
+        </div>
+      </div>
+
       <!-- TAKSH -->
-      <div class="project-panel active" id="taksh">
+      <div class="project-panel" id="taksh">
         <div class="project-layout">
 
           <div class="project-info">
@@ -252,11 +317,6 @@
        <div class="project-slider" data-slider="weather">
         <div class="slides">
         <div class="slide"><img src="weather.png" alt="Weather Interface Mockup"></div>
-        <!-- <div class="slide">
-          <div class="slide-placeholder">
-            <span>More screens coming soon</span>
-          </div>
-        </div> -->
         </div>
         <button class="slide-btn prev">‹</button>
         <button class="slide-btn next">›</button>
@@ -273,7 +333,6 @@
       </div>
 
       <!-- STARBUCKS -->
-    <!-- STARBUCKS -->
     <div class="project-panel" id="starbucks">
       <div class="project-layout">
 
@@ -362,20 +421,6 @@
     <div class="services-slider-container">
       <div class="services-slider">
 
-        <!-- CLONE LAST 
-        <div class="service-card clone">
-          <h4>Project Structuring & Cleanup</h4>
-          <p>Bringing clarity to existing or growing frontends.</p>
-          <div class="includes">
-            <span>Includes</span>
-            <ul>
-              <li>Codebase cleanup</li>
-              <li>Component structuring</li>
-              <li>Long-term Style consistency and focus.</li>
-            </ul>
-          </div>
-        </div>-->
-
         <!-- REAL CARDS -->
 
         <div class="service-card">
@@ -430,21 +475,6 @@
           </div>
         </div>
 
-        <!-- CLONE FIRST
-        <div class="service-card clone">
-          <h4>Frontend Development</h4>
-          <p>Clean, responsive interfaces built for performance and maintainability.</p>
-          <div class="includes">
-            <span>Includes</span>
-            <ul>
-              <li>Semantic HTML & scalable CSS</li>
-              <li>Responsive layouts</li>
-              <li>Accessible UI patterns</li>
-            </ul>
-          </div>
-        </div>
-
-      </div> -->
     </div>
 
     <button class="slider-btn right">&#10095;</button>
@@ -480,7 +510,7 @@ Process Section
           <p class="step-sub">Before thinking design or code.</p>
           <p>
             I start by understanding the goal, constraints, and context —
-            what the process needs to do, who it’s for, and what it needs exactly.
+            what the process needs to do, who it's for, and what it needs exactly.
           </p>
           <div class="process-tags">
             <span>Clarifying requirements</span>
@@ -595,7 +625,7 @@ Process Section
 </div>
 
     <div class="process-quote">
-      The goal isn’t perfection — it’s clarity, usability,
+      The goal isn't perfection — it's clarity, usability,
       and systems that hold up over time.
     </div>
 
@@ -816,17 +846,17 @@ Process Section
 
       <span class="contact-label">CONTACT</span>
 
-      <h2 class="contact-title">Let’s Build Something Structured.</h2>
+      <h2 class="contact-title">Let's Build Something Structured.</h2>
 
       <h3 class="contact-headline">
-        Have a project in mind? Let’s discuss it.
+        Have a project in mind? Let's discuss it.
       </h3>
 
       <p class="contact-description">
         I work with businesses transitioning digitally and teams that value clarity,
         performance, and long-term maintainability.
         <br><br>
-        For internships and junior roles, I’m open to contributing where thoughtful
+        For internships and junior roles, I'm open to contributing where thoughtful
         design meets structured engineering.
       </p>
 
