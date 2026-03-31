@@ -408,25 +408,26 @@ window.addEventListener("load", revealTrust);
 // PRICING FADE IN
 // ===========================
 
+// AFTER — safe null check
 const pricingSection = document.querySelector(".pricing-container");
 
-function revealPricing() {
-  const top = pricingSection.getBoundingClientRect().top;
-  const trigger = window.innerHeight * 0.85;
-
-  if (top < trigger) {
-    pricingSection.style.opacity = "1";
-    pricingSection.style.transform = "translateY(0)";
+if (pricingSection) {
+  function revealPricing() {
+    const top = pricingSection.getBoundingClientRect().top;
+    const trigger = window.innerHeight * 0.85;
+    if (top < trigger) {
+      pricingSection.style.opacity = "1";
+      pricingSection.style.transform = "translateY(0)";
+    }
   }
+
+  pricingSection.style.opacity = "0";
+  pricingSection.style.transform = "translateY(40px)";
+  pricingSection.style.transition = "all 1s ease";
+
+  window.addEventListener("scroll", revealPricing);
+  window.addEventListener("load", revealPricing);
 }
-
-pricingSection.style.opacity = "0";
-pricingSection.style.transform = "translateY(40px)";
-pricingSection.style.transition = "all 1s ease";
-
-window.addEventListener("scroll", revealPricing);
-window.addEventListener("load", revealPricing);
-
 // ===========================
 // SNAPSHOT SECTION ANIMATION
 // ===========================
